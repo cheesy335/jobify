@@ -1,15 +1,17 @@
 <?php
 
+use App\Http\Controllers\JobController;
+use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    $jobs = Job::all()->groupBy('featured');
+
+    // return $jobs;
+
+    return view('home', [
+        'featured_jobs' => $jobs[1],
+    ]);
 });
 
-Route::get('/jobs', function () {
-    return view('jobs.index');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/jobs', [JobController::class, 'index']);

@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
 
         Job::factory(10)->create();
 
+        $this->call(EmployerSeeder::class);
+
         // $this->call(JobSeeder::class);
     }
 }
