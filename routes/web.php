@@ -9,9 +9,15 @@ Route::get('/', function () {
 
     // return $jobs;
 
+    // return view('home');
+
     return view('home', [
         'featured_jobs' => $jobs[1],
     ]);
+});
+
+Route::get('/register', function () {
+    return view('auth.register');
 });
 
 Route::get('/jobs', [JobController::class, 'index']);

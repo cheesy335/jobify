@@ -17,8 +17,10 @@ class EmployerFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 1,
-            'name' => fake()->company(),
+            'name' => fake()->name(),
+            'company_name' => fake()->company(),
+            'email' => fake()->email(),
+            'password' => fake()->password(),
         ];
     }
 }
