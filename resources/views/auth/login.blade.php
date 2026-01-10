@@ -1,13 +1,9 @@
 <x-app>
-    <form action="/register" method="post" class="my-10 p-10 flex flex-col bg-base-200 w-100 items-center">
+    <form action="/login" method="post" class="my-10 p-10 flex flex-col bg-base-200 w-100 items-center">
     @csrf
-        <input type="name" name="name" placeholder="Full Name" class="input">
         <input type="email" name="email" placeholder="Email" class="input">
         <input type="password" name="password" placeholder="Password" class="input">
-        <input type="submit" value="Sign Up" class="btn btn-primary">
-        @error('name')
-            {{ $message }}
-        @enderror
+        <input type="submit" value="Login" class="btn btn-primary">
         @error('email')
             {{ $message }}
         @enderror

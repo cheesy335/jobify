@@ -11,7 +11,7 @@
 
     <x-navigation></x-navigation>
 
-    <main class="flex-1">
+    <main class="flex-1 mx-auto">
         {{ $slot }}
     </main>
 

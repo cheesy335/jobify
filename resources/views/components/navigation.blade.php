@@ -11,7 +11,16 @@
         </section>
 
         <section>
+            @guest
             <x-nav-link href="/login" class="btn btn-outline">Login</x-nav-link>
             <x-nav-link href="/register" class="btn btn-neutral">SignUp</x-nav-link>
+            @endguest
+
+            @auth
+            <form action="/logout" method="post">
+            @csrf
+            <input type="submit" value="Logout" class="btn btn-error btn-outline">
+            </form>
+            @endauth
         </section>
     </header>
