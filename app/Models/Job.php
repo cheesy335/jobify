@@ -15,6 +15,7 @@ class Job extends Model
         'user_id',
         'title',
         'salary',
+        'description',
     ];
 
     public function user(): BelongsTo
