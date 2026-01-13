@@ -7,11 +7,11 @@
     <title>Jobify</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="h-min-screnn flex flex-col">
+<body class="">
 
     <x-navigation></x-navigation>
 
-    <main class="flex-1 mx-auto">
+    <main class="">
         {{ $slot }}
     </main>
 

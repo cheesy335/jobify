@@ -1,5 +1,5 @@
 <x-app>
-    <form action="/register" method="post" class="my-10 p-10 flex flex-col bg-base-200 w-100 items-center">
+    <form action="/register" method="post" class="mx-auto my-10 p-10 flex flex-col bg-base-200 w-100 items-center">
     @csrf
         <input type="name" name="name" placeholder="Full Name" class="input">
         <input type="email" name="email" placeholder="Email" class="input">

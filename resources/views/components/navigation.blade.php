@@ -10,7 +10,7 @@
             </nav>
         </section>
 
-        <section>
+        <section class="flex gap-1">
             @guest
             <x-nav-link href="/login" class="btn btn-outline">Login</x-nav-link>
             <x-nav-link href="/register" class="btn btn-neutral">SignUp</x-nav-link>
@@ -18,9 +18,10 @@
 
             @auth
             <form action="/logout" method="post">
-            @csrf
-            <input type="submit" value="Logout" class="btn btn-error btn-outline">
+                @csrf
+                <input type="submit" value="Logout" class="btn btn-error btn-outline">
             </form>
+            <x-nav-link href="/jobs/create" class="btn btn-primary">Post a Job</x-nav-link>
             @endauth
         </section>
     </header>
