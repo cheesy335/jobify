@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,9 +46,15 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show()
     {
-        //
+        $user = Auth::user();
+        $jobs = Job::where('user_id', $user->id)->get();
+
+        return view('profile', [
+            'user' => $user,
+            'jobs' => $jobs,
+        ]);
     }
 
     /**

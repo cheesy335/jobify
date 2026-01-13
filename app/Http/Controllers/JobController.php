@@ -33,13 +33,15 @@ class JobController extends Controller
     {
         $request->validate([
             'title' => ['required'],
-            'salary' => ['required']
+            'salary' => ['required'],
+            'description' => ['required'],
         ]);
 
         Job::create([
             'user_id' => Auth::user()->id,
             'title' => $request->title,
             'salary' => $request->salary,
+            'description' => $request->description,
         ]);
 
         return redirect('/jobs');
