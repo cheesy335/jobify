@@ -48,7 +48,7 @@ class UserController extends Controller
      */
     public function show()
     {
-        $user = Auth::user();
+        $user = User::find(Auth::user()->id);
         $jobs = Job::where('user_id', $user->id)->get();
 
         return view('profile', [
