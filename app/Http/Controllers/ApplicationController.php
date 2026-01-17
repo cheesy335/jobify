@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\JobApplied;
 use App\Models\Application;
 use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ApplicationController extends Controller
 {
@@ -56,6 +58,7 @@ class ApplicationController extends Controller
             'job_id' => $job->id,
         ]);
 
+        Mail::to($application->job->user)->send(new JobApplied($application->user,$application->job));
         return back();
     }
 

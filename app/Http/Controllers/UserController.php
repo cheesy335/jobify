@@ -50,9 +50,10 @@ class UserController extends Controller
     public function show()
     {
         $user = User::find(Auth::user()->id);
-        $jobs = Job::where('user_id', $user->id)->get();
-        $applications = Application::where('user_id', $user->id)->get();
+        $jobs = $user->jobs;
+        $applications = $user->applications;
 
+        // dd($jobs);
         return view('profile', [
             'user' => $user,
             'jobs' => $jobs,

@@ -4,6 +4,7 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
+use App\Mail\JobApplied;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
