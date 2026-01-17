@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -50,10 +51,12 @@ class UserController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $jobs = Job::where('user_id', $user->id)->get();
+        $applications = Application::where('user_id', $user->id)->get();
 
         return view('profile', [
             'user' => $user,
             'jobs' => $jobs,
+            'applications' => $applications,
         ]);
     }
 

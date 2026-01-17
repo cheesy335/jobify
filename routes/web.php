@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
@@ -22,3 +23,5 @@ Route::post('/logout', [SessionController::class, 'destroy']);
 Route::get('/jobs', [JobController::class, 'index']);
 Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
 Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
+
+Route::post('/application', [ApplicationController::class, 'store']);

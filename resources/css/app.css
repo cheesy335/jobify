@@ -5,6 +5,10 @@
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
+@import '../../vendor/livewire/flux/dist/flux.css';
+@custom-variant dark (&:where(.dark, .dark *));
+
+
 @plugin "daisyui" {
    themes: light --default, dark --prefersdark, lofi;
 }

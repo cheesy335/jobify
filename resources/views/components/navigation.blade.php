@@ -10,13 +10,14 @@
             </nav>
         </section>
 
-        <section class="flex gap-1">
+        <section class="flex gap-1 items-center">
             @guest
             <x-nav-link href="/login" class="btn btn-outline">Login</x-nav-link>
             <x-nav-link href="/register" class="btn btn-neutral">SignUp</x-nav-link>
             @endguest
 
             @auth
+            <x-nav-link href="/profile">{{ Auth::user()->name }}</x-nav-link>
             <form action="/logout" method="post">
                 @csrf
                 <input type="submit" value="Logout" class="btn btn-error btn-outline">

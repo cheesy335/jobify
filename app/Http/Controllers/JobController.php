@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,14 +36,14 @@ class JobController extends Controller
         $request->validate([
             'title' => ['required'],
             'salary' => ['required'],
-            'description' => ['required'],
+            'location' => ['required'],
         ]);
 
         Job::create([
             'user_id' => Auth::user()->id,
             'title' => $request->title,
             'salary' => $request->salary,
-            'description' => $request->description,
+            'location' => $request->location,
         ]);
 
         return redirect('/jobs');
@@ -58,9 +60,8 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Job $job)
+    public function edit(Request $request)
     {
-        //
     }
 
     /**

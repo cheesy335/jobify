@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Jobify</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @fluxAppearance()
 </head>
 <body class="w-full h-screen">
 
@@ -16,5 +17,7 @@
     </main>
 
     <x-footer></x-footer>
+
+    @fluxScripts()
 </body>
 </html>

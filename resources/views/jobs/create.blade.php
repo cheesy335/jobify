@@ -5,7 +5,7 @@
     <div class="flex flex-col gap-2 w-[60%]">
         <input type="text" name="title" placeholder="Job Title" class="input w-full">
         <input type="text" name="salary" placeholder="$90000/year" class="input w-full">
-        <input type="text" name="description" placeholder="Job Description" class="textarea w-full">
+        <input type="text" name="location" placeholder="Raipur, Chhattishgarh / Remote" class="input w-full">
         <input type="submit" value="Post" class="btn btn-primary">
     </div>
     </form>
