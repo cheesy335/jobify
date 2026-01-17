@@ -66,7 +66,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('auth.edit',[
+            'user' => $user
+        ]);
     }
 
     /**
@@ -74,7 +76,12 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $updatedUser = $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        return redirect('/user/');
     }
 
     /**

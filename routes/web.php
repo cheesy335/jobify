@@ -11,16 +11,19 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/profile', [UserController::class, 'show'])->middleware('auth');
-
+// Auth
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/register', [UserController::class, 'store']);
-
 Route::get('/login', [SessionController::class, 'create']);
 Route::post('/login', [SessionController::class, 'store']);
+Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
-Route::post('/logout', [SessionController::class, 'destroy']);
+// User
+Route::get('/user', [UserController::class, 'show'])->middleware('auth');
+Route::get('/user/edit/{user}', [UserController::class, 'edit'])->middleware('auth');
+Route::post('/user/edit/{user}', [UserController::class, 'update'])->middleware('auth');
 
+// Job
 Route::get('/jobs', [JobController::class, 'index']);
 Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
 Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
