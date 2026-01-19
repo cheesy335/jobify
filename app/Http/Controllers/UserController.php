@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Application;
-use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,12 +47,11 @@ class UserController extends Controller
      */
     public function show()
     {
-        $user = User::find(Auth::user()->id);
+        $user = Auth::user();
         $jobs = $user->jobs;
         $applications = $user->applications;
 
-        // dd($jobs);
-        return view('profile', [
+        return view('profile.show', [
             'user' => $user,
             'jobs' => $jobs,
             'applications' => $applications,
@@ -66,22 +63,28 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('auth.edit',[
-            'user' => $user
-        ]);
+        $user = Auth::user();
+
+        return view('profile.edit', ['user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        $updatedUser = $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
+        $credentials = $request->validate([
+            'name' => ['required'],
+            'email' => ['required', 'unique:users,email'],
         ]);
 
-        return redirect('/user/');
+        $user = Auth::user();
+
+        $updatedUser = $user->update($credentials);
+
+        $request->session()->regenerate();
+
+        return redirect('/profile');
     }
 
     /**
@@ -89,6 +92,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect('/register');
     }
 }

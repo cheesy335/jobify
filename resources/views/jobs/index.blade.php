@@ -4,4 +4,7 @@
             <x-card :$job />
         @endforeach
     </div>
+    <div class="p-10 w-full">
+        {{ $jobs->links() }}
+    </div>
 </x-app>

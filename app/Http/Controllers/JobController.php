@@ -15,8 +15,9 @@ class JobController extends Controller
      */
     public function index()
     {
+        $jobs = Job::with('user')->paginate(6);
         return view('jobs.index', [
-            'jobs' => Job::all(),
+            'jobs' => $jobs,
         ]);
     }
 
@@ -60,8 +61,9 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request)
+    public function edit(Request $request, Job $job)
     {
+        return view('jobs.edit', ['job' => $job]);
     }
 
     /**
@@ -69,7 +71,15 @@ class JobController extends Controller
      */
     public function update(Request $request, Job $job)
     {
-        //
+        $credentials = $request->validate([
+            'title' => ['required'],
+            'salary' => ['required'],
+            'location' => ['required'],
+        ]);
+
+        $job->update($credentials);
+
+        return redirect('/jobs');
     }
 
     /**
@@ -77,6 +87,8 @@ class JobController extends Controller
      */
     public function destroy(Job $job)
     {
-        //
+        $job->delete();
+
+        return back();
     }
 }
